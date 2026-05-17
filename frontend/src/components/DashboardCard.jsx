@@ -1,67 +1,108 @@
 import { ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
-function DashboardCard({ title, description, icon: Icon, path, count }) {
+function DashboardCard({ title, description, icon: Icon, path, count, color = "#1b4fff" }) {
   const navigate = useNavigate();
+
+  const bgMap = {
+    "#1b4fff": "#eef2ff",
+    "#0ea5e9": "#e0f2fe",
+    "#10b981": "#d1fae5",
+    "#f59e0b": "#fef3c7",
+    "#ef4444": "#fee2e2",
+    "#8b5cf6": "#ede9fe",
+  };
+
+  const lightBg = bgMap[color] || "#eef2ff";
 
   return (
     <div
       onClick={() => navigate(path)}
-      style={{
-        background: "white",
-        padding: "24px",
-        borderRadius: "18px",
-        boxShadow: "0 8px 25px rgba(0,0,0,0.08)",
-        cursor: "pointer",
-        transition: "0.2s",
-        border: "1px solid #eee",
-      }}
+      style={styles.card}
       onMouseEnter={(e) => {
-        e.currentTarget.style.transform = "translateY(-5px)";
+        e.currentTarget.style.boxShadow = "0 8px 32px rgba(27,79,255,0.13)";
+        e.currentTarget.style.borderColor = color;
+        e.currentTarget.style.transform = "translateY(-3px)";
       }}
       onMouseLeave={(e) => {
+        e.currentTarget.style.boxShadow = "0 1px 4px rgba(0,0,0,0.06)";
+        e.currentTarget.style.borderColor = "#e2e8f5";
         e.currentTarget.style.transform = "translateY(0)";
       }}
     >
-      <div
-        style={{
-          width: "50px",
-          height: "50px",
-          borderRadius: "14px",
-          background: "#eef2ff",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          marginBottom: "16px",
-        }}
-      >
-        <Icon size={26} color="#4f46e5" />
+      <div style={{ ...styles.iconWrap, background: lightBg }}>
+        <Icon size={22} color={color} />
       </div>
 
-      <h3 style={{ marginBottom: "8px" }}>{title}</h3>
+      <div style={styles.cardBody}>
+        <h3 style={styles.cardTitle}>{title}</h3>
+        <p style={styles.cardDesc}>{description}</p>
+        {count !== undefined && (
+          <div style={{ ...styles.countBadge, background: lightBg, color }}>
+            {count} items
+          </div>
+        )}
+      </div>
 
-      <p style={{ color: "#666", fontSize: "14px", lineHeight: "1.5" }}>
-        {description}
-      </p>
-
-      {count !== undefined && (
-        <h2 style={{ marginTop: "12px", color: "#111827" }}>{count}</h2>
-      )}
-
-      <div
-        style={{
-          marginTop: "18px",
-          display: "flex",
-          alignItems: "center",
-          gap: "6px",
-          color: "#4f46e5",
-          fontWeight: "600",
-        }}
-      >
-        Open <ArrowRight size={18} />
+      <div style={{ ...styles.cardArrow, color }}>
+        <ArrowRight size={16} />
       </div>
     </div>
   );
 }
+
+const styles = {
+  card: {
+    background: "#fff",
+    border: "1.5px solid #e2e8f5",
+    borderRadius: "14px",
+    padding: "20px",
+    cursor: "pointer",
+    transition: "all 0.18s ease",
+    boxShadow: "0 1px 4px rgba(0,0,0,0.06)",
+    display: "flex",
+    alignItems: "flex-start",
+    gap: "16px",
+    position: "relative",
+  },
+  iconWrap: {
+    width: "44px",
+    height: "44px",
+    borderRadius: "11px",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    flexShrink: 0,
+  },
+  cardBody: {
+    flex: 1,
+    minWidth: 0,
+  },
+  cardTitle: {
+    fontSize: "15px",
+    fontWeight: "700",
+    color: "#0f1f5c",
+    marginBottom: "4px",
+  },
+  cardDesc: {
+    fontSize: "13px",
+    color: "#6b7a99",
+    lineHeight: "1.5",
+    margin: 0,
+  },
+  countBadge: {
+    display: "inline-block",
+    marginTop: "8px",
+    fontSize: "12px",
+    fontWeight: "600",
+    padding: "2px 10px",
+    borderRadius: "20px",
+  },
+  cardArrow: {
+    flexShrink: 0,
+    marginTop: "2px",
+    opacity: 0.5,
+  },
+};
 
 export default DashboardCard;
