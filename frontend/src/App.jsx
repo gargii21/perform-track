@@ -116,14 +116,14 @@ function App() {
   }
 />
 
-<Route
+{/* <Route
   path="/employee/profile"
   element={
     <ProtectedRoute allowedRole="employee">
       <ComingSoon title="My Profile" />
     </ProtectedRoute>
   }
-/>
+/> */}
 
 <Route
   path="/manager/team"
