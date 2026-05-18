@@ -74,7 +74,7 @@ function EmployeeDashboard() {
             path="/employee/checkins"
             color="#0ea5e9"
           />
-          <DashboardCard
+          {/* <DashboardCard
             title="My Progress"
             description="View your goal completion status and progress summary."
             icon={BarChart3}
@@ -87,7 +87,7 @@ function EmployeeDashboard() {
             icon={UserCircle}
             path="/employee/profile"
             color="#f59e0b"
-          />
+          /> */}
         </div>
       </main>
     </div>

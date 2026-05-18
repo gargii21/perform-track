@@ -13,11 +13,11 @@ import Sidebar from "../components/Sidebar";
 
 const navItems = [
   { label: "Dashboard", icon: BarChart3, path: "/manager-dashboard" },
-  { label: "Team Members", icon: Users, path: "/manager/team" },
+  // { label: "Team Members", icon: Users, path: "/manager/team" },
   { label: "Goal Approvals", icon: ClipboardList, path: "/manager/approvals" },
   { label: "Shared Goals", icon: Share2, path: "/manager/shared-goals" },
   { label: "Quarterly Check-ins", icon: MessageSquareText, path: "/manager/checkins" },
-  { label: "Team Analytics", icon: BarChart3, path: "/manager/analytics" },
+  // { label: "Team Analytics", icon: BarChart3, path: "/manager/analytics" },
 ];
 
 function ManagerDashboard() {
@@ -45,7 +45,7 @@ function ManagerDashboard() {
 
         <div style={styles.statsRow}>
           {[
-            { label: "Team Members", value: "8", color: "#0ea5e9" },
+            // { label: "Team Members", value: "8", color: "#0ea5e9" },
             { label: "Pending Approvals", value: "3", color: "#f59e0b" },
             { label: "Shared Goals", value: "5", color: "#1b4fff" },
             { label: "Check-ins Due", value: "2", color: "#ef4444" },
@@ -60,13 +60,13 @@ function ManagerDashboard() {
         <h2 style={styles.sectionTitle}>Quick Actions</h2>
 
         <div style={styles.grid}>
-          <DashboardCard
+          {/* <DashboardCard
             title="Team Members"
             description="View employees mapped under your reporting hierarchy."
             icon={Users}
             path="/manager/team"
             color="#0ea5e9"
-          />
+          /> */}
           <DashboardCard
             title="Goal Approvals"
             description="Review submitted goal sheets and approve or return them."
@@ -88,13 +88,13 @@ function ManagerDashboard() {
             path="/manager/checkins"
             color="#10b981"
           />
-          <DashboardCard
+          {/* <DashboardCard
             title="Team Analytics"
             description="View team-wise goal completion and progress reports."
             icon={BarChart3}
             path="/manager/analytics"
             color="#8b5cf6"
-          />
+          /> */}
         </div>
       </main>
     </div>

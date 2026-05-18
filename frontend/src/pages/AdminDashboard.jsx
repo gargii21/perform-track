@@ -44,10 +44,10 @@ function AdminDashboard() {
 
         <div style={styles.statsRow}>
           {[
-            { label: "Total Employees", value: "42", color: "#8b5cf6" },
+            // { label: "Total Employees", value: "42", color: "#8b5cf6" },
             { label: "Pending Sheets", value: "7", color: "#f59e0b" },
             { label: "Locked Sheets", value: "3", color: "#ef4444" },
-            { label: "Completed Q1", value: "28", color: "#10b981" },
+            { label: "Completed Q1", value: "5", color: "#10b981" },
           ].map((s) => (
             <div key={s.label} style={styles.statCard}>
               <div style={{ ...styles.statValue, color: s.color }}>{s.value}</div>
