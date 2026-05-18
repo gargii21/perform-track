@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-
+const API_URL = import.meta.env.VITE_API_URL;
 function SharedGoals() {
   const token = localStorage.getItem("token");
 
@@ -29,7 +29,7 @@ function SharedGoals() {
       };
 
       const res = await axios.post(
-        "http://localhost:5000/api/shared-goals",
+        `${API_URL}/api/shared-goals`,
         payload,
         {
           headers: {

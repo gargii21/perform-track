@@ -11,7 +11,7 @@ import {
   GhostBtn,
   StatusBadge,
 } from "./AdminLayout";
-
+const API_URL = import.meta.env.VITE_API_URL;
 const QUARTER_OPTIONS = [
   { value: "Q1", label: "Q1" },
   { value: "Q2", label: "Q2" },
@@ -67,7 +67,7 @@ function AdminReports() {
     setLoading(true);
     try {
       const res = await axios.get(
-        `http://localhost:5000/api/reports/achievement?quarter=${quarter}`,
+        `${API_URL}/api/reports/achievement?quarter=${quarter}`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
       setReport(res.data);
@@ -81,7 +81,7 @@ function AdminReports() {
   const exportExcel = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:5000/api/reports/achievement/export?quarter=${quarter}`,
+        `${API_URL}/api/reports/achievement/export?quarter=${quarter}`,
         { headers: { Authorization: `Bearer ${token}` }, responseType: "blob" }
       );
       const url  = window.URL.createObjectURL(new Blob([res.data]));

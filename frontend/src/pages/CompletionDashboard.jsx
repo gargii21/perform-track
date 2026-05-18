@@ -10,7 +10,7 @@ import {
   PrimaryBtn,
   StatusBadge,
 } from "./AdminLayout";
-
+const API_URL = import.meta.env.VITE_API_URL;
 const QUARTER_OPTIONS = [
   { value: "Q1", label: "Q1" },
   { value: "Q2", label: "Q2" },
@@ -68,7 +68,7 @@ function CompletionDashboard() {
     setLoading(true);
     try {
       const res = await axios.get(
-        `http://localhost:5000/api/reports/completion?quarter=${quarter}`,
+        `${API_URL}/api/reports/completion?quarter=${quarter}`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
       setData(res.data);

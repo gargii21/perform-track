@@ -6,7 +6,7 @@ import {
   TrendingDown, Send, ChevronDown, MessageSquare,
 } from "lucide-react";
 import Sidebar from "../components/Sidebar";
-
+const API_URL = import.meta.env.VITE_API_URL;
 const navItems = [
   { label: "Dashboard", icon: BarChart3, path: "/manager-dashboard" },
   { label: "Team Members", icon: Users, path: "/manager/team" },
@@ -41,7 +41,7 @@ function ManagerCheckins() {
   const fetchTeamCheckins = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:5000/api/checkins/manager/team?quarter=${quarter}`,
+        `${API_URL}/api/checkins/manager/team?quarter=${quarter}`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
       setCheckins(res.data);
@@ -56,7 +56,7 @@ function ManagerCheckins() {
     setSaving((s) => ({ ...s, [checkinId]: true }));
     try {
       await axios.put(
-        `http://localhost:5000/api/checkins/manager/comment/${checkinId}`,
+        `${API_URL}/api/checkins/manager/comment/${checkinId}`,
         { managerComment: comments[checkinId] },
         { headers: { Authorization: `Bearer ${token}` } }
       );

@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { AdminLayout, StyledTable, StatusBadge } from "./AdminLayout";
+const API_URL = import.meta.env.VITE_API_URL;
 
 const ACTION_MAP = {
   unlock:  { label: "Unlock",  bg: "#fef3c7", color: "#92400e" },
@@ -101,7 +102,7 @@ function AdminAuditLogs() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/admin/audit-logs", {
+      .get(`${API_URL}/api/admin/audit-logs`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => setLogs(res.data))

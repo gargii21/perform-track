@@ -14,7 +14,7 @@ import {
   Circle,
 } from "lucide-react";
 import Sidebar from "../components/Sidebar";
-
+const API_URL = import.meta.env.VITE_API_URL;
 const navItems = [
   { label: "Dashboard", icon: BarChart3, path: "/employee-dashboard" },
   { label: "My Goal Sheet", icon: Target, path: "/employee/goals" },
@@ -53,7 +53,7 @@ function EmployeeCheckins() {
   const fetchApprovedGoals = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:5000/api/checkins/employee/approved-goals",
+        `${API_URL}/api/checkins/employee/approved-goals`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
       setGoals(res.data);
@@ -86,7 +86,7 @@ function EmployeeCheckins() {
     }
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/checkins/employee/submit",
+        `${API_URL}/api/checkins/employee/submit`,
         { quarter, checkins },
         { headers: { Authorization: `Bearer ${token}` } }
       );

@@ -8,7 +8,7 @@ import {
   StatusBadge,
   PrimaryBtn,
 } from "./AdminLayout";
-
+const API_URL = import.meta.env.VITE_API_URL;
 const STATUS_MAP = {
   pending:  { label: "Pending",  bg: "#fef3c7", color: "#92400e" },
   approved: { label: "Approved", bg: "#d1fae5", color: "#065f46" },
@@ -79,7 +79,7 @@ function AdminGoalSheets() {
 
   const fetchSheets = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/admin/goal-sheets", {
+      const res = await axios.get(`${API_URL}/api/admin/goal-sheets`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setSheets(res.data);
@@ -93,7 +93,7 @@ function AdminGoalSheets() {
     if (!reason) { alert("Reason is required"); return; }
     try {
       const res = await axios.put(
-        `http://localhost:5000/api/admin/unlock-goal-sheet/${sheetId}`,
+        `${API_URL}/api/admin/unlock-goal-sheet/${sheetId}`,
         { reason },
         { headers: { Authorization: `Bearer ${token}` } }
       );

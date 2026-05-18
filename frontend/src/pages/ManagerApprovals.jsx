@@ -6,7 +6,7 @@ import {
   User, AlertCircle, Clock, ThumbsUp,
 } from "lucide-react";
 import Sidebar from "../components/Sidebar";
-
+const API_URL = import.meta.env.VITE_API_URL;
 const navItems = [
   { label: "Dashboard", icon: BarChart3, path: "/manager-dashboard" },
   { label: "Team Members", icon: Users, path: "/manager/team" },
@@ -32,7 +32,7 @@ function ManagerApprovals() {
 
   const fetchSheets = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/goals/submitted", {
+      const res = await axios.get(`${API_URL}/api/goals/submitted`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setSheets(res.data);
@@ -46,7 +46,7 @@ function ManagerApprovals() {
   const approveSheet = async (sheetId) => {
     try {
       const res = await axios.put(
-        `http://localhost:5000/api/goals/manager/approve/${sheetId}`,
+        `${API_URL}/api/goals/manager/approve/${sheetId}`,
         {},
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -61,7 +61,7 @@ function ManagerApprovals() {
     if (!reworkComment.trim()) return alert("Please enter a rework comment");
     try {
       const res = await axios.put(
-        `http://localhost:5000/api/goals/manager/rework/${reworkModal}`,
+        `${API_URL}/api/goals/manager/rework/${reworkModal}`,
         { comment: reworkComment },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -218,7 +218,7 @@ function GoalEditCard({ goal, token, onSaved }) {
     setSaving(true);
     try {
       await axios.put(
-        `http://localhost:5000/api/goals/manager/edit/${goal.id}`,
+        `${API_URL}/api/goals/manager/edit/${goal.id}`,
         { target, weightage },
         { headers: { Authorization: `Bearer ${token}` } }
       );
