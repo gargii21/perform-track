@@ -1,6 +1,34 @@
 import { User, Goal, GoalSheet, Checkin } from "../models/index.js";
 import { Sequelize } from "sequelize";
 
+export const getAdminSummary = async (req, res) => {
+  try {
+    const [
+      totalEmployees,
+      totalManagers,
+      pendingSheets,
+      lockedSheets,
+      completedQ1,
+    ] = await Promise.all([
+      User.count({ where: { role: "employee" } }),
+      User.count({ where: { role: "manager" } }),
+      GoalSheet.count({ where: { status: "submitted" } }),
+      GoalSheet.count({ where: { status: "rework" } }),
+      Checkin.count({ where: { quarter: "Q1", progressStatus: "Completed" } }),
+    ]);
+
+    res.json({
+      totalEmployees,
+      totalManagers,
+      pendingSheets,
+      lockedSheets,
+      completedQ1,
+    });
+  } catch (error) {
+    res.status(500).json({ message: "Failed to fetch summary", error: error.message });
+  }
+};
+
 export const getAdminAnalytics = async (req, res) => {
   try {
     const totalEmployees = await User.count({

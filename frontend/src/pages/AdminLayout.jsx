@@ -10,14 +10,19 @@ import {
   CheckSquare,
   Target,
   LogOut,
+  FileSpreadsheet,
+  Unlock,
+  History,
+  Users,
 } from "lucide-react";
 
 const navItems = [
-  { label: "Dashboard",        icon: BarChart3,       path: "/admin/dashboard"    },
-  { label: "Goal Sheets",      icon: ClipboardList,   path: "/admin/goal-sheets"  },
-  { label: "Achievement Report", icon: FileText,      path: "/admin/reports"      },
-  { label: "Completion Dashboard", icon: CheckSquare, path: "/admin/completion"   },
-  { label: "Audit Logs",       icon: ScrollText,      path: "/admin/audit-logs"   },
+  { label: "Dashboard",       icon: BarChart3,       path: "/admin-dashboard" },
+  { label: "Reports",         icon: FileSpreadsheet, path: "/admin/reports" },
+  { label: "Completion",      icon: BarChart3,       path: "/admin/completion" },
+  { label: "Audit Logs",      icon: History,         path: "/admin/audit-logs" },
+  { label: "Goal Sheet Mgmt", icon: Unlock,          path: "/admin/goal-sheets" },
+  { label: "Analytics",       icon: BarChart3,       path: "/admin/analytics" }
 ];
 
 export function AdminSidebar() {
