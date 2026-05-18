@@ -17,6 +17,18 @@ function Login() {
     { value: "admin", label: "Admin / HR", icon: <ShieldCheck size={20} /> },
   ];
 
+  const TEST_ACCOUNTS = [
+  { email: "employee2@gmail.com", password: "123456", role: "employee", label: "Employee", color: "#1b4fff", bg: "#eef2ff" },
+  { email: "manager2@gmail.com",  password: "123456", role: "manager",  label: "Manager",  color: "#0ea5e9", bg: "#e0f2fe" },
+  { email: "admin2@gmail.com",    password: "123456", role: "admin",    label: "Admin / HR", color: "#8b5cf6", bg: "#ede9fe" },
+];
+
+const fillTestAccount = (account) => {
+  setEmail(account.email);
+  setPassword(account.password);
+  setRole(account.role);
+};
+
   const loginUser = async (e) => {
     e.preventDefault();
     try {
@@ -49,7 +61,7 @@ function Login() {
             <Target size={20} color="#fff" />
           </div>
           <div style={styles.brandName}>
-            Perform<span style={{ color: "#1b4fff" }}>task</span>
+            Perform<span style={{ color: "#1b4fff" }}>track</span>
           </div>
         </div>
 
@@ -153,6 +165,28 @@ function Login() {
             Login as {activeRole?.label}
           </button>
         </form>
+        {/* Quick Test Switch */}
+<div style={styles.testBar}>
+  <div style={styles.testLabel}>Quick switch (testing only)</div>
+  <div style={styles.testBtns}>
+    {TEST_ACCOUNTS.map((acc) => (
+      <button
+        key={acc.role}
+        type="button"
+        onClick={() => fillTestAccount(acc)}
+        style={{
+          ...styles.testBtn,
+          background: acc.bg,
+          color: acc.color,
+          border: `1.5px solid ${acc.color}33`,
+          outline: role === acc.role ? `2px solid ${acc.color}` : "none",
+        }}
+      >
+        {acc.label}
+      </button>
+    ))}
+  </div>
+</div>
       </div>
     </div>
   );
@@ -328,6 +362,33 @@ const styles = {
     justifyContent: "center",
     gap: "8px",
   },
+  testBar: {
+  marginTop: "20px",
+  paddingTop: "16px",
+  borderTop: "1px dashed #dce3f5",
+},
+testLabel: {
+  fontSize: "11px",
+  fontWeight: "600",
+  color: "#9aaac8",
+  textTransform: "uppercase",
+  letterSpacing: "0.5px",
+  marginBottom: "8px",
+},
+testBtns: {
+  display: "flex",
+  gap: "8px",
+},
+testBtn: {
+  flex: 1,
+  padding: "8px 0",
+  borderRadius: "9px",
+  fontSize: "12px",
+  fontWeight: "700",
+  cursor: "pointer",
+  fontFamily: "'Segoe UI', sans-serif",
+  transition: "all 0.15s",
+},
 };
 
 export default Login;

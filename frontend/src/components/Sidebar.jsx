@@ -27,7 +27,7 @@ function Sidebar({ navItems, role }) {
           <Target size={18} color="#fff" />
         </div>
         <span style={styles.brandName}>
-          Perform<span style={{ color }}>task</span>
+          Perform<span style={{ color }}>track</span>
         </span>
       </div>
 

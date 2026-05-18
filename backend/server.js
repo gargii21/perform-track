@@ -33,9 +33,9 @@ const startServer = async () => {
     await sequelize.sync({ alter: true });
     console.log("Models synced");
 
-    app.listen(5000, () => {
-      console.log("Server running on port 5000");
-    });
+    app.listen(process.env.PORT || 5000, () => {
+  console.log(`Server running on port ${process.env.PORT || 5000}`);
+});
   } catch (error) {
     console.log("Server error:", error.message);
   }

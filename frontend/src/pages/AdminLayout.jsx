@@ -35,7 +35,7 @@ export function AdminSidebar() {
           <Target size={18} color="#fff" />
         </div>
         <span style={SS.brandName}>
-          Perform<span style={{ color }}>task</span>
+          Perform<span style={{ color }}>track</span>
         </span>
       </div>
 
