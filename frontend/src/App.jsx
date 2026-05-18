@@ -14,7 +14,7 @@ import AdminAuditLogs from "./pages/AdminAuditLogs";
 import AdminGoalSheets from "./pages/AdminGoalSheets";
 import CompletionDashboard from "./pages/CompletionDashboard";
 import AnalyticsDashboard from "./pages/AnalyticsDashboard";
-import ManagerAnalytics  from "./pages/ManagerAnalytics.jsx";
+import ManagerAnalytics  from "./pages/managerAnalytics.jsx";
 
 function ProtectedRoute({ children, allowedRole }) {
   const token = localStorage.getItem("token");
