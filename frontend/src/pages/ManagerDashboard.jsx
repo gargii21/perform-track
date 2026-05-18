@@ -95,6 +95,12 @@ function ManagerDashboard() {
             path="/manager/analytics"
             color="#8b5cf6"
           /> */}
+          <DashboardCard
+  title="Team Analytics"
+  description="View progress trends and review completion insights."
+  icon={BarChart3}
+  path="/manager/analytics"
+/>
         </div>
       </main>
     </div>

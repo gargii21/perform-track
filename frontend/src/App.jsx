@@ -13,6 +13,7 @@ import AdminReports from "./pages/AdminReports";
 import AdminAuditLogs from "./pages/AdminAuditLogs";
 import AdminGoalSheets from "./pages/AdminGoalSheets";
 import CompletionDashboard from "./pages/CompletionDashboard";
+import AnalyticsDashboard from "./pages/AnalyticsDashboard";
 
 function ProtectedRoute({ children, allowedRole }) {
   const token = localStorage.getItem("token");
@@ -132,16 +133,6 @@ function App() {
   }
 />
 
-
-
-<Route
-  path="/manager/analytics"
-  element={
-    <ProtectedRoute allowedRole="manager">
-      <ComingSoon title="Team Analytics" />
-    </ProtectedRoute>
-  }
-/>
 <Route
   path="/employee/checkins"
   element={
@@ -199,6 +190,22 @@ function App() {
   element={
     <ProtectedRoute allowedRole="manager">
       <CompletionDashboard />
+    </ProtectedRoute>
+  }
+/>
+<Route
+  path="/admin/analytics"
+  element={
+    <ProtectedRoute allowedRole="admin">
+      <AnalyticsDashboard />
+    </ProtectedRoute>
+  }
+/>
+<Route
+  path="/manager/analytics"
+  element={
+    <ProtectedRoute allowedRole="manager">
+      <AnalyticsDashboard />
     </ProtectedRoute>
   }
 />

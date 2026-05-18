@@ -87,6 +87,12 @@ function AdminDashboard() {
             path="/admin/goal-sheets"
             color="#f59e0b"
           />
+          <DashboardCard
+  title="Analytics"
+  description="View trends, goal distribution, completion status, and manager effectiveness."
+  icon={BarChart3}
+  path="/admin/analytics"
+/>
         </div>
       </main>
     </div>

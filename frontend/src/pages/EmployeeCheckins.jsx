@@ -31,7 +31,7 @@ const QUARTERS = [
 ];
 
 const STATUS_OPTIONS = [
-  { value: "Not Started", icon: Circle, color: "#9aaac8", bg: "#f4f7ff" },
+  { value: "Not Started", icon: Circle, color: "#f43c3c", bg: "#f4f7ff" },
   { value: "On Track", icon: TrendingUp, color: "#10b981", bg: "#d1fae5" },
   { value: "Completed", icon: CheckCircle2, color: "#1b4fff", bg: "#eef2ff" },
 ];

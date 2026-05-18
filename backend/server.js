@@ -11,6 +11,7 @@ import sharedGoalRoutes from "./routes/sharedGoalRoutes.js";
 import checkinRoutes from "./routes/checkinRoutes.js";
 import reportRoutes from "./routes/reportRoutes.js";
 import adminRoutes from "./routes/adminRoutes.js";
+import analyticsRoutes from "./routes/analyticsRoutes.js";
 
 const app = express();
 
@@ -23,6 +24,7 @@ app.use("/api/shared-goals", sharedGoalRoutes);
 app.use("/api/checkins", checkinRoutes);
 app.use("/api/reports", reportRoutes);
 app.use("/api/admin", adminRoutes);
+app.use("/api/analytics", analyticsRoutes);
 const startServer = async () => {
   try {
     console.log(process.env.DATABASE_URL);
